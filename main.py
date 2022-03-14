@@ -6,7 +6,6 @@ from discord.utils import get
 import random
 import youtube_dl
 from youtube_dl import YoutubeDL
-import youtube_dl
 import pafy
 import urllib
 from discord import FFmpegPCMAudio, PCMVolumeTransformer
