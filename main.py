@@ -79,11 +79,11 @@ async def spamdm(context, amount, user: discord.User, message):
       await user.send(message)
 
 @client.command()
-async def getUserId(ctx, user: discord.User=None): # defaults user to None if nothing is passed
-    if not user: # you are not using an arg variable, you're using user
+async def getUserId(ctx, user: discord.User=None):
+    if not user:
         userId = ctx.author.id
     else:
-        userId = user.id # same as previous
+        userId = user.id
     await ctx.send(userId)
 
 @client.command()
