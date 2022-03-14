@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 import discord
 import os
-from keep_alive import keep_alive
 from discord.ext import commands
 from discord.utils import get
 import random
@@ -23,14 +22,10 @@ ydl_opts = {
     }],
 }
 
-from replit import db
-keys = db.keys()
 os.system("pip install cryptocode")
 os.system("pip install PyNaCl")
 import cryptocode
 client = commands.Bot(command_prefix="unsc-")
-
-db["randomnumber"] = random.randint(1, 10)
 
 
 @client.event
@@ -60,11 +55,6 @@ async def ytaudio(ctx):
   with youtube_dl.YoutubeDL(ydl_opts) as ydl:
     ydl.download([url])
   await ctx.send("Song Uploaded.")
-
-@client.command()
-async def listkeys(ctx):
-  keys = db.keys()
-  await ctx.reply(keys)
 
 @client.command()
 async def breadspam(ctx, user: discord.User=None):
@@ -101,14 +91,6 @@ async def randnumbers(ctx):
   for i in range(5):
     await ctx.channel.send(random.randint(1, 99999999999999999999999))
 
-@client.command(pass_context=True)
-async def assignkey(ctx):
-  await ctx.reply('You will recieve a message with your private key do not share this with anyone.')
-  user= str(ctx.author.id)
-  print(user)
-  db[user] = random.randint(1, 99999999999999999999999)
-  await ctx.author.send(db[user])
-
 @client.command()
 async def join(ctx):
     channel = ctx.author.voice.channel
@@ -116,22 +98,6 @@ async def join(ctx):
 @client.command()
 async def leave(ctx):
     await ctx.voice_client.disconnect()
-
-@client.command()
-async def pickrandom(ctx):
-  await ctx.reply("Item 1?")
-  item1 = await client.wait_for("message")
-  db["item1"] = item1.content
-  await ctx.channel.send("Item 2?")
-  item2 = await client.wait_for("message")
-  db["item2"] = item2.content
-  ranint = random.randint(1, 2)
-  if ranint == 1:
-    item1win = db["item1"]
-    await ctx.channel.send(item1win)
-  elif ranint == 2:
-    item2win = db["item2"]
-    await ctx.channel.send(item2win)
 
 @client.event
 async def on_message_error(ctx, error):
@@ -156,6 +122,4 @@ async def stopmp3(ctx):
 async def immersed(ctx):
   await ctx.reply('command i wrote in vr from my new desktop')
 
-keep_alive()
-token = os.environ.get("DISCORD_BOT_SECRET")
-client.run(token)
+client.run("OTM0MTM1MjAwNDg3NzAyNTc4.YerrMw.kyr183nL75z2VuflHOLAOYRzBJk")
