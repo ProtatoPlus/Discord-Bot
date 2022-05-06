@@ -1,6 +1,9 @@
 from __future__ import unicode_literals
+import  os
+os.system("pip install discord-py")
+os.system("pip install youtube_dl")
+os.system("pip install pafy")
 import discord
-import os
 from discord.ext import commands
 from discord.utils import get
 import random
